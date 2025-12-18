@@ -1,5 +1,5 @@
 name: MinoCore
 version: '1.0-SNAPSHOT'
-main: gg.mino.minoCore.MinoCore
+main: gg.mino.minocore.MinoCore
 api-version: '1.21'
 authors: [ EvilTerabyte ]
