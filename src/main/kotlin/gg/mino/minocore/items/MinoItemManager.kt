@@ -5,8 +5,8 @@ import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 
-class MinoItemManager : Listener {
-    private val items = mutableMapOf<String, MinoCustomItem>()
+object MinoItemManager {
+    val items = mutableMapOf<String, MinoCustomItem>()
 
     fun register(item: MinoCustomItem) {
         items[item.id] = item
@@ -19,11 +19,7 @@ class MinoItemManager : Listener {
         return stack
     }
 
-    @EventHandler
-    fun onInteract(event: PlayerInteractEvent) {
-        val item = event.item ?: return
-        val id = item.getMinoTag("mino_item_id") ?: return
-
-        items[id]?.onRightClick(event.player)
+    fun getMinoItem(id: String): MinoCustomItem? {
+        return items[id]
     }
 }

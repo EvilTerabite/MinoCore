@@ -3,3 +3,4 @@ version: '1.0-SNAPSHOT'
 main: gg.mino.minocore.MinoCore
 api-version: '1.21'
 authors: [ EvilTerabyte ]
+
