@@ -1,9 +1,7 @@
 package gg.mino.minocore.items
 
-import gg.mino.minocore.player.MinoPlayer
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
-import sun.net.www.content.text.plain
 
 abstract class MinoCustomItem(val id: String) {
     abstract fun getItemStack(): ItemStack

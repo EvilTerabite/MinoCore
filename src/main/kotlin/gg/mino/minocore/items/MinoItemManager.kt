@@ -1,9 +1,6 @@
 package gg.mino.minocore.items
 
 import gg.mino.minocore.MinoCore
-import org.bukkit.event.EventHandler
-import org.bukkit.event.Listener
-import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 
 object MinoItemManager {

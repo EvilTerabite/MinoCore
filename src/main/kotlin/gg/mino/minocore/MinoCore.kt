@@ -1,9 +1,6 @@
 package gg.mino.minocore
 
-import gg.mino.minocore.items.MinoCustomItem
-import gg.mino.minocore.items.MinoItemManager
 import gg.mino.minocore.items.getMino
-import gg.mino.minocore.items.getMinoTag
 import gg.mino.minocore.items.isMinoCustomItem
 import gg.mino.minocore.player.MinoPlayerManager
 import gg.mino.minocore.ui.MinoMenu
@@ -13,9 +10,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.player.PlayerQuitEvent
-import org.bukkit.plugin.PluginManager
 import org.bukkit.plugin.java.JavaPlugin
-import org.checkerframework.checker.units.qual.min
 import java.util.logging.Logger
 
 class MinoCore(val plugin: JavaPlugin) : Listener {
