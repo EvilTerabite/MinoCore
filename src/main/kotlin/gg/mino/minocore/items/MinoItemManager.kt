@@ -1,5 +1,6 @@
 package gg.mino.minocore.items
 
+import gg.mino.minocore.MinoCore
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerInteractEvent
@@ -9,6 +10,7 @@ object MinoItemManager {
     val items = mutableMapOf<String, MinoCustomItem>()
 
     fun register(item: MinoCustomItem) {
+        MinoCore.logger.info("${item.id} registered!")
         items[item.id] = item
     }
 
