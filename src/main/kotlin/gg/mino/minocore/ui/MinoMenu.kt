@@ -16,7 +16,7 @@ abstract class MinoMenu(size: Int, title: String, val fillerItem: ItemStack? = n
     abstract fun setup()
     private fun fill() {
         if(fillerItem == null) return
-        for(i in 0..inventory.size) {
+        for(i in 0..<inventory.size) {
             val item = inventory.contents[i]
             val material = item?.type
             if(material == null || material == Material.AIR) {
@@ -34,6 +34,10 @@ abstract class MinoMenu(size: Int, title: String, val fillerItem: ItemStack? = n
         setup()
         fill()
         player.openInventory(inventory)
+    }
+
+    fun close(player: Player) {
+        player.closeInventory()
     }
 
     fun handleClick(event: InventoryClickEvent) {
