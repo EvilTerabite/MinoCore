@@ -7,6 +7,7 @@ import gg.mino.minocore.items.getMinoTag
 import gg.mino.minocore.items.isMinoCustomItem
 import gg.mino.minocore.player.MinoPlayerManager
 import gg.mino.minocore.ui.MinoMenu
+import org.bukkit.Server
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
@@ -15,18 +16,20 @@ import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.plugin.PluginManager
 import org.bukkit.plugin.java.JavaPlugin
 import org.checkerframework.checker.units.qual.min
+import java.util.logging.Logger
 
-class MinoCore : JavaPlugin(), Listener {
-    private lateinit var minoItemManager: MinoItemManager
+class MinoCore(val plugin: JavaPlugin) : Listener {
 
-    override fun onEnable() {
+    fun onEnable() {
+        server = plugin.server
+        logger = plugin.logger
+        instance = plugin
         permissionMessage = "<red>I'm sorry, you do not have permission to perform %commandName%!</red>"
-        instance = this
-
-        server.pluginManager.registerEvents(this,this)
+        server.pluginManager.registerEvents(this,plugin)
+        logger.info("MinoCore initialized!")
     }
 
-    override fun onDisable() {
+    fun onDisable() {
         // Plugin shutdown logic
     }
 
@@ -48,16 +51,27 @@ class MinoCore : JavaPlugin(), Listener {
     @EventHandler
     fun onInteract(event: PlayerInteractEvent) {
         val item = event.item ?: return
-        if(item.isMinoCustomItem()) {
-            val minoItem = item.getMino()!!
+        if(!item.isMinoCustomItem()) {
+            return
+        }
+        val minoItem = item.getMino()!!
+
+
+        if(event.action.isRightClick) {
             minoItem.onRightClick(event.player)
+        }
+
+        if(event.action.isLeftClick) {
+            minoItem.onLeftClick(event.player)
         }
     }
 
     companion object {
         lateinit var permissionMessage: String
             private set
-        lateinit var pluginManager: PluginManager
+        lateinit var server: Server
+            private set
+        lateinit var logger: Logger
             private set
         lateinit var instance: JavaPlugin
             private set
